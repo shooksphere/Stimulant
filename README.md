@@ -62,9 +62,9 @@ A comprehensive, production-ready ERC-20 token smart contract built on Ethereum 
 
 2. **Update .env with your credentials**
    ```env
-   PRIVATE_KEY=
-INFURA_API_KEY=
-ETHERSCAN_API_KEY=
+   PRIVATE_KEY=...
+INFURA_API_KEY=...
+ETHERSCAN_API_KEY=...
 REPORT_GAS=true
    ```
 
