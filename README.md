@@ -1,5 +1,9 @@
 # Stimulant (STIM) - ERC-20 Token
 
+<p align="center">
+  <img src="https://img.sanishtech.com/u/9c7a6c22b1f23646992c6ff32fcf0973.jpeg" alt="Stimulant Token Logo" width="353" height="454">
+</p>
+
 A comprehensive, production-ready ERC-20 token smart contract built on Ethereum with advanced features including minting, burning, and pause functionality.
 
 ## 📋 Table of Contents
