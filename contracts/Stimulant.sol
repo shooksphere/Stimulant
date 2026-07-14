@@ -5,7 +5,6 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-
 /**
  * @title Stimulant
  * @dev A comprehensive ERC-20 token contract with burn and pause capabilities
@@ -15,14 +14,11 @@ contract Stimulant is ERC20, ERC20Burnable, ERC20Pausable, Ownable {
     // Emission events
     event TokensMinted(address indexed to, uint256 amount);
     event TokensBurned(address indexed from, uint256 amount);
-
     // Mainnet approval transaction hashes
     string public constant APPROVAL_TX_1 = "0x6387457c5600500934253031a1356f8c61f48ed9d891da1385551cde629c1181";
     string public constant APPROVAL_TX_2 = "0x050c0e2945e206fcc715008e051e2bf78e7a5e8b624874324a590c8727dd72e5";
-    
     // Designated owner address
     address public constant DESIGNATED_OWNER = 0x0311502EA9AcF3a532d32C8D8830839Ce34bD378;
-
     /**
      * @dev Constructor to initialize the token
      * @param initialSupply Initial number of tokens to mint (in wei)
@@ -32,7 +28,6 @@ contract Stimulant is ERC20, ERC20Burnable, ERC20Pausable, Ownable {
         _mint(DESIGNATED_OWNER, initialSupply);
         emit TokensMinted(DESIGNATED_OWNER, initialSupply);
     }
-
     /**
      * @dev Pause all token transfers
      * @notice Only owner can pause
@@ -40,7 +35,6 @@ contract Stimulant is ERC20, ERC20Burnable, ERC20Pausable, Ownable {
     function pause() public onlyOwner {
         _pause();
     }
-
     /**
      * @dev Resume token transfers
      * @notice Only owner can unpause
@@ -48,7 +42,6 @@ contract Stimulant is ERC20, ERC20Burnable, ERC20Pausable, Ownable {
     function unpause() public onlyOwner {
         _unpause();
     }
-
     /**
      * @dev Mint new tokens
      * @param to Address to receive the minted tokens
@@ -61,7 +54,6 @@ contract Stimulant is ERC20, ERC20Burnable, ERC20Pausable, Ownable {
         _mint(to, amount);
         emit TokensMinted(to, amount);
     }
-
     /**
      * @dev Burn tokens from an account
      * @param from Address to burn tokens from
@@ -74,7 +66,6 @@ contract Stimulant is ERC20, ERC20Burnable, ERC20Pausable, Ownable {
         _burn(from, amount);
         emit TokensBurned(from, amount);
     }
-
     /**
      * @dev Get token metadata
      * @return name Token name
@@ -94,7 +85,6 @@ contract Stimulant is ERC20, ERC20Burnable, ERC20Pausable, Ownable {
     {
         return (name(), symbol(), decimals(), totalSupply());
     }
-
     /**
      * @dev Get approval transaction hashes
      * @return tx1 First approval transaction hash
@@ -107,9 +97,7 @@ contract Stimulant is ERC20, ERC20Burnable, ERC20Pausable, Ownable {
     {
         return (APPROVAL_TX_1, APPROVAL_TX_2);
     }
-
     // Required function overrides for ERC20 and ERC20Pausable
-
     /**
      * @dev Override _update to include pause check
      */
@@ -120,7 +108,6 @@ contract Stimulant is ERC20, ERC20Burnable, ERC20Pausable, Ownable {
     ) internal override(ERC20, ERC20Pausable) whenNotPaused {
         super._update(from, to, amount);
     }
-
     /**
      * @dev Override nonces for permit functionality
      */
